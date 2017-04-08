@@ -5,49 +5,49 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Matakuliah;
+use App\MataKuliah;
 
-class MatakuliahController extends Controller
+class MataKuliahController extends Controller
 {
-    public function awal()
+     public function awal()
     {
-        return view('matakuliah.awal',['data'=>matakuliah::all()]);
+      return view('matakuliah.awal', ['data'=>Matakuliah::all()]);
     }
     public function tambah()
     {
-        return view('matakuliah.tambah');
+      return view('matakuliah.tambah');
     }
     public function simpan(Request $input)
     {
-        $matakuliah = new matakuliah();
-        $matakuliah->title =$input->title;
-        $matakuliah->keterangan =$input->keterangan;
-        $informasi=$matakuliah->save() ? 'Berhasil simpan data':'gagal simpan data';
-        return redirect('matakuliah')->with(['informasi'=>$informasi]);
+      $matakuliah = new MataKuliah;
+      $matakuliah->title = $input->title;
+        $matakuliah->keterangan = $input->keterangan;
+        $informasi = $matakuliah->save() ? 'Berhasil simpan data' : 'Gagal simpan data';
+      return redirect('matakuliah')->with(['informasi'=>$informasi]);
     }
     public function edit($id)
     {
-        $matakuliah = matakuliah::find($id);
+        $matakuliah = Matakuliah::find($id);
         return view('matakuliah.edit')->with(array('matakuliah'=>$matakuliah));
     }
- public function lihat($id)
+    public function lihat($id)
     {
-        $matakuliah = matakuliah::find($id);
+        $matakuliah = Matakuliah::find($id);
         return view('matakuliah.lihat')->with(array('matakuliah'=>$matakuliah));
     }
- public function update($id,Request $input)
+    public function update($id, Request $input)
     {
-        $matakuliah = matakuliah::find($id);
-        $matakuliah->title =$input->title;
-        $matakuliah->keterangan =$input->keterangan;
-        $informasi=$matakuliah->save() ? 'Berhasil Update data':'gagal update data';
+        $matakuliah = Matakuliah::find($id);
+        $matakuliah->title = $input->title;
+        $matakuliah->keterangan = $input->keterangan;
+        $informasi = $matakuliah->save() ? 'Berhasil update data' : 'Gagal update data';
         return redirect('matakuliah')->with(['informasi'=>$informasi]);
     }
     public function hapus($id)
     {
-        $matakuliah = matakuliah::find($id);
-        $informasi=$matakuliah->delete() ? 'Berhasil hapus data':'gagal hapus data';
+        $matakuliah = Matakuliah::find($id);
+        $informasi = $matakuliah->delete() ? 'Berhasil hapus data' : 'Gagal hapus data';
         return redirect('matakuliah')->with(['informasi'=>$informasi]);
     }
-
 }
+

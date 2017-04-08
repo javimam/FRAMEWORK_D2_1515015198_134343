@@ -38,7 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">JOKOWI 5</div>
+                <div class="title">javier</div>
             </div>
         </div>
     </body>
