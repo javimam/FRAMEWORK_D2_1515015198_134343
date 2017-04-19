@@ -1,19 +1,19 @@
 <div class="form-group">
-	<label class="col-sm-2 control-label" id="Nama">Nama</label>
+	<label class="col-sm-2 control-label" id="nama">Nama</label>
 	<div class="col-sm-10">
-		{!! Form::text('Nama',null,['class'=>'form-control','id'=>'Nama','placeholder'=>"Nama"]) !!}
+		{!! Form::text('nama',null,['class'=>'form-control','id'=>'nama','placeholder'=>"Nama"]) !!}
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-sm-2 control-label" id="NIP"> NIP</label>
+		<label class="col-sm-2 control-label" id="nim"> Nip</label>
 		<div class="col-sm-10">
-			{!! Form::text('NIP',null,['class'=>'form-control','id'=>'NIP','placeholder'=>"NIP"]) !!}
+			{!! Form::text('nip',null,['class'=>'form-control','id'=>'nip','placeholder'=>"Nip"]) !!}
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-sm-2 control-label" id="Alamat"> Alamat</label>
+		<label class="col-sm-2 control-label" id="alamat"> Alamat</label>
 		<div class="col-sm-10">
-			{!! Form::textarea('Alamat',null,['class'=>'form-control','id'=>'Alamat','placeholder'=>"Alamat"]) !!}
+			{!! Form::textarea('alamat',null,['class'=>'form-control','id'=>'alamat','placeholder'=>"Alamat"]) !!}
 		</div>
 	</div>
 	<div class="form-group">

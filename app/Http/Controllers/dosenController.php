@@ -5,47 +5,52 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+
 use App\dosen;
-use App\Pengguna;
+
+use App\pengguna;
 
 class dosenController extends Controller
 {
-  protected $informasi = 'Gagal Melakukan Aksi';
+  protected $informasi = 'Gagal malakukan aksi';
   public function awal()
   {
     $semuaDosen = dosen::all();
-    return view('dosen.awal', compact('semuaDosen'));
+  	return view('dosen.awal', compact('semuaDosen'));
   }
-    public function tambah()
-    {
-        return view('dosen.tambah');
-         }
+  public function tambah()
+  {
+  	return view('dosen.tambah');
+  }
   public function simpan(Request $input)
   {
-    $pengguna = new Pengguna($input->only('username','password'));
+    $pengguna = new pengguna($input->only('username','password'));
       if ($pengguna->save())
       {
         $dosen = new dosen;
-        $dosen->Nama = $input->Nama;
-        $dosen->NIP = $input->NIP;
-        $dosen->Alamat = $input->Alamat;
+        $dosen->nama = $input->nama;
+        $dosen->nip = $input->nip;
+        $dosen->alamat = $input->alamat;
           if ($pengguna->dosen()->save($dosen)) $this->informasi = 'Berhasil simpan data';
     }
       return redirect('dosen')->with(['informasi' => $this->informasi]);
     }
-    public function edit($id){
+    public function edit($id)
+    {
       $dosen = dosen::find($id);
       return view('dosen.edit')->with(array('dosen' => $dosen));
     }
-    public function lihat($id){
+    public function lihat($id)
+    {
       $dosen = dosen::find($id);
       return view('dosen.lihat')->with(array('dosen' => $dosen));
     }
-    public function update($id, Request $input){
+    public function update($id, Request $input)
+    {
       $dosen = dosen::find($id);
-      $dosen->Nama = $input->Nama;
-      $dosen->NIP = $input->NIP;
-      $dosen->Alamat = $input->Alamat;
+      $dosen->nama = $input->nama;
+      $dosen->nip = $input->nip;
+      $dosen->alamat = $input->alamat;
       $dosen->save();
       
         if (!is_null($input->username))
@@ -61,7 +66,8 @@ class dosenController extends Controller
         
         return redirect('dosen')->with(['informasi' => $this->informasi]);
       }
-      public function hapus($id) {
+      public function hapus($id)
+      {
         $dosen = dosen::find($id);
         if ($dosen->pengguna()->delete())
         {

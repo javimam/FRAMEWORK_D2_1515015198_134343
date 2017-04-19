@@ -8,12 +8,12 @@
 				<tr>
 						<td>Nama</td>
 						<td>:</td>
-						<td>{{ $mahasiswa->Nama }}</td>
+						<td>{{ $mahasiswa->nama }}</td>
 				</tr>
 				<tr>
 						<td>NIM</td>
 						<td>:</td>
-						<td>{{ $mahasiswa->NIM }}</td>
+						<td>{{ $mahasiswa->nim }}</td>
 				</tr>
 
 				<tr>

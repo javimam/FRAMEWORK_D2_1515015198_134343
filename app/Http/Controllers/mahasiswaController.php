@@ -6,31 +6,31 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Mahasiswa;
+use App\mahasiswa;
 
-use App\Pengguna;
+use App\pengguna;
 
 class mahasiswaController extends Controller
 {
   protected $informasi = 'Gagal melakukan aksi';
   public function awal()
   {
-    $semuaMahasiswa = Mahasiswa::all();
-    return view('mahasiswa.awal', compact('semuaMahasiswa'));
+    $semuaMahasiswa = mahasiswa::all();
+  	return view('mahasiswa.awal', compact('semuaMahasiswa'));
   }
   public function tambah()
   {
-    return view('mahasiswa.tambah');
+  	return view('mahasiswa.tambah');
   }
   public function simpan(Request $input)
   {
-    $pengguna = new Pengguna($input->only('username','password'));
+    $pengguna = new pengguna($input->only('username','password'));
       if ($pengguna->save())
       {
-    $mahasiswa = new Mahasiswa;
-    $mahasiswa->Nama = $input->Nama;
-    $mahasiswa->NIM = $input->NIM;
-    $mahasiswa->Alamat = $input->Alamat;
+  	$mahasiswa = new mahasiswa;
+  	$mahasiswa->nama = $input->nama;
+  	$mahasiswa->nim = $input->nim;
+  	$mahasiswa->alamat = $input->alamat;
       if ($pengguna->mahasiswa()->save($mahasiswa)) $this->informasi = 'Berhasil simpan data';
     }
       return redirect('mahasiswa')->with(['informasi' => $this->informasi]);
@@ -48,9 +48,9 @@ class mahasiswaController extends Controller
     public function update($id, Request $input)
     {
       $mahasiswa = mahasiswa::find($id);
-      $mahasiswa->Nama = $input->Nama;
-      $mahasiswa->NIM = $input->NIM;
-      $mahasiswa->Alamat = $input->Alamat;
+      $mahasiswa->nama = $input->nama;
+      $mahasiswa->nim = $input->nim;
+      $mahasiswa->alamat = $input->alamat;
       $mahasiswa->save();
       
         if (!is_null($input->username))

@@ -22,8 +22,8 @@
 								@foreach ($semuaMahasiswa as $mahasiswa)
 									<tr>
 									<td>{{ $x++ }}</td>
-									<td>{{ $mahasiswa->Nama or 'Nama kosong'}}</td>
-									<td>{{ $mahasiswa->NIM or 'NIM kosong'}}</td>
+									<td>{{ $mahasiswa->nama or 'Nama kosong'}}</td>
+									<td>{{ $mahasiswa->nim or 'NIM kosong'}}</td>
 									<td>{{ $mahasiswa->Alamat or 'Alamat kosong'}}</td>
 									<td>
 										<div class="btn-group" role="group">

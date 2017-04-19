@@ -5,19 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Jadwal_Matakuliah;
-use App\Mahasiswa;
-use App\Dosen_Matakuliah;
-use App\Ruangan;
-class Jadwal_MatakuliahController extends Controller
+
+use App\jadwal_matakuliah;
+
+use App\mahasiswa;
+
+use App\dosen_matakuliah;
+
+use App\ruangan;
+
+class jadwal_matakuliahController extends Controller
 {
- protected $guarded =['id'];
+   protected $guarded =['id'];
    
    protected $informasi = 'Gagal melakukan aksi';
   
    public function awal()
    {
-    $semuaJadwalMatakuliah = jadwal_matakuliah::all();
+   	$semuaJadwalMatakuliah = jadwal_matakuliah::all();
       return view('jadwal_matakuliah.awal', compact('semuaJadwalMatakuliah'));
    }
    public function tambah()
@@ -25,12 +30,12 @@ class Jadwal_MatakuliahController extends Controller
       $mahasiswa = new mahasiswa;
       $ruangan = new ruangan;
       $dosen_matakuliah = new dosen_matakuliah;
-    return view('jadwal_matakuliah.tambah', compact('mahasiswa','ruangan','dosen_matakuliah'));
+   	return view('jadwal_matakuliah.tambah', compact('mahasiswa','ruangan','dosen_matakuliah'));
    }
    public function simpan(Request $input)
    {
-    $jadwal_matakuliah = new jadwal_matakuliah($input->only('Ruangan_id','Dosen_Matakuliah_id','Mahasiswa_id'));
-    if($jadwal_matakuliah->save()) $this->informasi = "Jadwal mahasiswa berhasil disimpan ";
+   	$jadwal_matakuliah = new jadwal_matakuliah($input->only('ruangan_id','dosen_matakuliah_id','mahasiswa_id'));
+   	if($jadwal_matakuliah->save()) $this->informasi = "Jadwal mahasiswa berhasil disimpan ";
       return redirect('jadwal_matakuliah')->with(['informasi' => $this->informasi]);
    }
    public function lihat($id)
@@ -49,7 +54,7 @@ class Jadwal_MatakuliahController extends Controller
    public function update($id,Request $input)
    {
       $jadwal_matakuliah = jadwal_matakuliah::find($id);
-      $jadwal_matakuliah->fill($input->only('Ruangan_id','Dosen_Matakuliah_id','Mahasiswa_id'));
+      $jadwal_matakuliah->fill($input->only('ruangan_id','dosen_matakuliah_id','mahasiswa_id'));
       if($jadwal_matakuliah->save()) $this->informasi = "Jadwal Mahasiswa berhasil diperbarui";
       return redirect('jadwal_matakuliah')->with(['informasi' => $this->informasi]);
    }

@@ -8,17 +8,17 @@
 				<tr>
 						<td>Nama</td>
 						<td>:</td>
-						<td>{{ $dosen->Nama }}</td>
+						<td>{{ $dosen->nama }}</td>
 				</tr>
 				<tr>
-						<td>NIP</td>
+						<td>Nip</td>
 						<td>:</td>
-						<td>{{ $dosen->NIP }}</td>
+						<td>{{ $dosen->nip }}</td>
 				</tr>
 				<tr>
 						<td>Alamat</td>
 						<td>:</td>
-						<td>{{ $dosen->Alamat }}</td>
+						<td>{{ $dosen->alamat }}</td>
 				</tr>
 				<tr>
 						<td>Username</td>
